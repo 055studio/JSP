@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="cs.dit.dto.BoardDTO" alias="Board"/>
+	</typeAliases>
+	
+	<!-- 트랜잭션 관리와 커넥션 풀링을 위한 환경설정 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/> <!-- JDBC: mybatis 트랜잭션 관리 / MANAGED: 서블릿컨테이너 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@//localhost:1521/xepdb1"/>
+				<property name="username" value="HMKIM"/>
+				<property name="password" value="1234"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- SQL 코드의 매핑 정의를 가지는 XML 파일인 mapper 목록을 지정한다 -->
+	<mappers>
+		<mapper resource="cs/dit/dao/Board-mapper.xml"/>
+	</mappers>
+</configuration>
